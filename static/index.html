@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vidsme-2API 高级面板</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 左侧配置面板 -->
+        <div class="sidebar">
+            <div class="header">
+                <h2>Vidsme-2API</h2>
+                <p>高级图像生成面板</p>
+            </div>
+
+            <div class="form-group">
+                <label for="api-key">API Key</label>
+                <input type="password" id="api-key" placeholder="请输入您的 API Key" value="1">
+            </div>
+
+            <div class="form-group">
+                <label for="model-select">模型 (Model)</label>
+                <select id="model-select"></select>
+            </div>
+            
+            <div class="form-group">
+                <label for="ratio-select">比例 (Ratio)</label>
+                <select id="ratio-select">
+                    <option value="2:3">2:3 (竖屏)</option>
+                    <option value="1:1">1:1 (方形)</option>
+                    <option value="3:2">3:2 (横屏)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="prompt-input">提示词 (Prompt)</label>
+                <textarea id="prompt-input" rows="8" placeholder="输入您的图像描述..."></textarea>
+            </div>
+
+            <button id="generate-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="icon"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.75-11.25a.75.75 0 00-1.5 0v2.5h-2.5a.75.75 0 000 1.5h2.5v2.5a.75.75 0 001.5 0v-2.5h2.5a.75.75 0 000-1.5h-2.5v-2.5z" clip-rule="evenodd" /></svg>
+                <span>添加新任务</span>
+            </button>
+        </div>
+
+        <!-- 中间历史记录 -->
+        <div class="main-content">
+            <div class="history-header">
+                <h3>历史记录</h3>
+                <div class="sort-options">
+                    <label for="sort-select">排序:</label>
+                    <select id="sort-select">
+                        <option value="newest">时间 (最新)</option>
+                        <option value="oldest">时间 (最旧)</option>
+                    </select>
+                </div>
+            </div>
+            <div id="history-list">
+                <div id="history-placeholder" class="placeholder">
+                    <p>暂无历史记录，请在左侧创建新任务</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 右侧预览 -->
+        <div class="preview-panel" id="preview-panel">
+            <div id="preview-placeholder" class="placeholder">
+                <p>点击历史记录中的任务以预览</p>
+            </div>
+            <div id="preview-content" class="hidden">
+                <img id="preview-image" src="" alt="预览图像">
+                <div class="preview-details">
+                    <h4>任务详情</h4>
+                    <p><strong>模型:</strong> <span id="preview-model"></span></p>
+                    <p><strong>提示词:</strong></p>
+                    <p id="preview-prompt"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/static/script.js"></script>
+</body>
+</html>
